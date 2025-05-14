@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  tasks:
+    - name: Include nginx role
+      include_role:
+        name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
+      vars:
+        nginx_listen_port: 80
+        nginx_server_name: "example.com"
+        nginx_root_dir: "/var/www/example"

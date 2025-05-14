@@ -1,0 +1,38 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: Verify Nginx installation
+      ansible.builtin.command: nginx -v
+      register: nginx_version
+      changed_when: false
+      failed_when: nginx_version.rc != 0
+
+    - name: Verify Nginx is running
+      ansible.builtin.service:
+        name: nginx
+        state: started
+      register: nginx_running
+      failed_when: not nginx_running.status.ActiveState == "active"
+
+    - name: Verify Nginx configuration file exists
+      ansible.builtin.stat:
+        path: /etc/nginx/nginx.conf
+      register: nginx_conf
+      failed_when: not nginx_conf.stat.exists
+
+    - name: Check Nginx configuration syntax
+      ansible.builtin.command: nginx -t
+      register: nginx_syntax
+      changed_when: false
+      failed_when: nginx_syntax.rc != 0
+
+    - name: Get HTTP response from Nginx
+      ansible.builtin.uri:
+        url: http://localhost
+        return_content: yes
+      register: nginx_response
+      failed_when: 
+        - nginx_response.status != 200
+        - "'Welcome to Nginx' not in nginx_response.content"

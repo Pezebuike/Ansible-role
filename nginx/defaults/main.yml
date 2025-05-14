@@ -1,0 +1,37 @@
+---
+# Nginx listening port
+nginx_listen_port: 80
+
+# Server name (domain)
+nginx_server_name: localhost
+
+# Root directory for web files
+nginx_root_dir: /var/www/html
+
+# User and group for Nginx process
+nginx_user: www-data
+nginx_group: www-data
+
+# Worker processes - set to auto by default
+nginx_worker_processes: auto
+
+# Worker connections
+nginx_worker_connections: 1024
+
+# PID file path
+nginx_pid_file: /run/nginx.pid
+
+# Default index file
+nginx_index_file: index.html
+
+# Nginx service name
+nginx_service_name: nginx
+
+# Whether to enable the service
+nginx_service_enabled: true
+
+# Whether to start the service
+nginx_service_started: true
+
+# Whether to restart Nginx on configuration changes
+nginx_restart_on_change: true

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Nginx on {{ ansible_hostname }}</title>
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Nginx!</h1>
+    <p>If you see this page, the nginx web server is successfully installed and
+    working. Further configuration is required.</p>
+
+    <p>This server is running on host <strong>{{ ansible_hostname }}</strong>.</p>
+    
+    <p>Server details:</p>
+    <ul>
+        <li>Listening on port: {{ nginx_listen_port }}</li>
+        <li>Server name: {{ nginx_server_name }}</li>
+        <li>Document root: {{ nginx_root_dir }}</li>
+    </ul>
+
+    <p><em>Thank you for using this Ansible role.</em></p>
+</body>
+</html>

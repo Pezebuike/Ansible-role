@@ -1,0 +1,7 @@
+- hosts: webservers
+  become: true
+  roles:
+    - role: yourusername.nginx
+      nginx_listen_port: 8080
+      nginx_server_name: "example.com"
+      nginx_root_dir: "/var/www/example"
