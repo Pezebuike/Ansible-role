@@ -8,5 +8,5 @@
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
       vars:
         nginx_listen_port: 80
-        nginx_server_name: "example.com"
-        nginx_root_dir: "/var/www/example"
+        nginx_server_name: "nginx"
+        nginx_root_dir: "/var/www/html"

@@ -3,4 +3,4 @@
   remote_user: root
   become: true
   roles:
-    - role: ../../nginx_role
+    - role: ../nginx_role
